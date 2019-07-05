@@ -4,8 +4,8 @@
 package sources
 
 import (
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 // UKGovArchive is the Service that handles access to the UKGovArchive data source.

@@ -1,12 +1,12 @@
 
-# [![OWASP Logo](https://github.com/OWASP/Amass/blob/master/images/owasp_logo.png) OWASP Amass](https://www.owasp.org/index.php/OWASP_Amass_Project) - Installation Guide
+# [![OWASP Logo](https://github.com/lanzay/Amass/blob/master/images/owasp_logo.png) OWASP Amass](https://www.owasp.org/index.php/OWASP_Amass_Project) - Installation Guide
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/amass.svg)](https://repology.org/metapackage/amass/versions)
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/amass)
 
 ## Prebuilt Binaries
 
-A [precompiled version is available](https://github.com/OWASP/Amass/releases) with each release.
+A [precompiled version is available](https://github.com/lanzay/Amass/releases) with each release.
 
 ## Using Docker
 
@@ -35,7 +35,7 @@ If you prefer to build your own binary from the latest release of the source cod
 1. Download OWASP Amass:
 
 ```bash
-go get -u github.com/OWASP/Amass/...
+go get -u github.com/lanzay/Amass/...
 ```
 
 2. If you wish to rebuild the binaries from the source code:
@@ -51,7 +51,7 @@ At this point, the binaries should be in *$GOPATH/bin*.
 3. Several wordlists can be found in the following directory:
 
 ```bash
-ls $GOPATH/src/github.com/OWASP/Amass/wordlists/
+ls $GOPATH/src/github.com/lanzay/Amass/wordlists/
 ```
 
 ## Packages Maintained by the Amass Project

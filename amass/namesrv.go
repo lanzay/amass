@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/handlers"
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/handlers"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 type timesRequest struct {
@@ -153,7 +153,7 @@ func (ns *NameService) checkSubdomain(req *core.DNSRequest) {
 		Domain: req.Domain,
 		Tag:    req.Tag,
 		Source: req.Source,
-	}, ns.timesForSubdomain(sub))
+	}, ns.timesForSubdomain(sub)) //Какое количество раз встретился субдомен
 }
 
 func (ns *NameService) timesForSubdomain(sub string) int {
@@ -166,6 +166,7 @@ func (ns *NameService) timesForSubdomain(sub string) int {
 	return <-times
 }
 
+//Считает сколько раз встретился суб домен
 func (ns *NameService) processTimesRequests() {
 	curIdx := 0
 	maxIdx := 9

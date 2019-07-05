@@ -11,17 +11,17 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/OWASP/Amass/amass"
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/handlers"
-	"github.com/OWASP/Amass/amass/sources"
 	"github.com/fatih/color"
-	homedir "github.com/mitchellh/go-homedir"
+	"github.com/lanzay/Amass/amass"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/handlers"
+	"github.com/lanzay/Amass/amass/sources"
+	"github.com/mitchellh/go-homedir"
 )
 
 const (
-	exampleConfigFileURL = "https://github.com/OWASP/Amass/blob/master/examples/config.ini"
-	userGuideURL         = "https://github.com/OWASP/Amass/blob/master/doc/user_guide.md"
+	exampleConfigFileURL = "https://github.com/lanzay/Amass/blob/master/examples/config.ini"
+	userGuideURL         = "https://github.com/lanzay/Amass/blob/master/doc/user_guide.md"
 )
 
 var (

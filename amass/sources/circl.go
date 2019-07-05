@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 // CIRCL is the Service that handles access to the CIRCL data source.

@@ -1,7 +1,7 @@
 
-# [![OWASP Logo](https://github.com/OWASP/Amass/blob/master/images/owasp_logo.png) OWASP Amass](https://www.owasp.org/index.php/OWASP_Amass_Project) - User's Guide
+# [![OWASP Logo](https://github.com/lanzay/Amass/blob/master/images/owasp_logo.png) OWASP Amass](https://www.owasp.org/index.php/OWASP_Amass_Project) - User's Guide
 
-![Network graph](https://github.com/OWASP/Amass/blob/master/images/network_06092018.png "Amass Network Mapping")
+![Network graph](https://github.com/lanzay/Amass/blob/master/images/network_06092018.png "Amass Network Mapping")
 
 ----
 
@@ -186,7 +186,7 @@ If you decide to use an Amass configuration file, it will be automatically disco
 
 ## The Configuration File
 
-You will need a config file to use your API keys with Amass. See the [Example Configuration File](https://github.com/OWASP/Amass/blob/master/examples/config.ini) for more details.
+You will need a config file to use your API keys with Amass. See the [Example Configuration File](https://github.com/lanzay/Amass/blob/master/examples/config.ini) for more details.
 
 ### Default Section
 
@@ -291,11 +291,11 @@ amass viz -maltego
 
 2. Import the CSV file with the correct Connectivity Table settings:
 
-![Connectivity table](https://github.com/OWASP/Amass/blob/master/images/maltego_graph_import_wizard.png "Connectivity Table Settings")
+![Connectivity table](https://github.com/lanzay/Amass/blob/master/images/maltego_graph_import_wizard.png "Connectivity Table Settings")
 
 3. All the Amass findings will be brought into your Maltego Graph:
 
-![Maltego results](https://github.com/OWASP/Amass/blob/master/images/maltego_results.png "Maltego Results")
+![Maltego results](https://github.com/lanzay/Amass/blob/master/images/maltego_results.png "Maltego Results")
 
 ## Integrating OWASP Amass into Your Work
 
@@ -307,7 +307,7 @@ import(
     "math/rand"
     "time"
 
-    "github.com/OWASP/Amass/amass"
+    "github.com/lanzay/Amass/amass"
 )
 
 func main() {

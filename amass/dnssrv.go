@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 	"github.com/miekg/dns"
 )
 
@@ -96,7 +96,7 @@ func (ds *DNSService) resolvedName(req *core.DNSRequest) {
 		return
 	}
 	req.Records = records
-	
+
 	ds.Bus().Publish(core.NameResolvedTopic, req)
 }
 

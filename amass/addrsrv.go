@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 var (
@@ -19,7 +19,7 @@ var (
 	netCache map[int]*core.ASNRequest
 	// The reserved network address ranges
 	reservedAddrRanges []*net.IPNet
-	reservedCIDRs = []string{
+	reservedCIDRs      = []string{
 		"192.168.0.0/16",
 		"172.16.0.0/12",
 		"10.0.0.0/8",

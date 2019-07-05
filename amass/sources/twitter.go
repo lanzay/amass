@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
 	"github.com/dghubble/go-twitter/twitter"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 	"golang.org/x/oauth2"
 )
 

@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
 	"github.com/fatih/color"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 // Banner is the ASCII art logo used within help output.

@@ -18,9 +18,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/OWASP/Amass/amass/utils"
 	"github.com/go-ini/ini"
 	"github.com/google/uuid"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 const (
@@ -31,6 +31,9 @@ const (
 // Config passes along Amass enumeration configurations
 type Config struct {
 	sync.Mutex
+
+	//Append to output Out of scope domain
+	IncludeOutOfScope bool
 
 	// A Universally Unique Identifier (UUID) for the enumeration
 	UUID uuid.UUID

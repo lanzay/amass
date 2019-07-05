@@ -13,10 +13,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/utils"
 	"github.com/PuerkitoBio/fetchbot"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 var (
@@ -26,6 +26,7 @@ var (
 // GetAllSources returns a slice of all data source services, initialized and ready.
 func GetAllSources(config *core.Config, bus *core.EventBus) []core.Service {
 	return []core.Service{
+		NewWebsiteInformer(config, bus),
 		NewAlienVault(config, bus),
 		NewArchiveIt(config, bus),
 		NewArchiveToday(config, bus),

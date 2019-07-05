@@ -11,10 +11,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/handlers"
-	"github.com/OWASP/Amass/amass/utils"
 	"github.com/fatih/color"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/handlers"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 const (

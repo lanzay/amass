@@ -3,7 +3,7 @@ package sources
 import (
 	"testing"
 
-	"github.com/OWASP/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/core"
 )
 
 func TestRobtex(t *testing.T) {

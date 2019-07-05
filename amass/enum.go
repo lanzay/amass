@@ -10,11 +10,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OWASP/Amass/amass/core"
-	"github.com/OWASP/Amass/amass/handlers"
-	"github.com/OWASP/Amass/amass/sources"
-	"github.com/OWASP/Amass/amass/utils"
 	"github.com/google/uuid"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/handlers"
+	"github.com/lanzay/Amass/amass/sources"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 // Enumeration is the object type used to execute a DNS enumeration with Amass.
@@ -409,6 +409,11 @@ func (e *Enumeration) sendOutput(o *core.Output) {
 	default:
 		if e.Config.IsDomainInScope(o.Name) {
 			e.outputQueue.Append(o)
+		} else {
+			if e.Config.IncludeOutOfScope {
+				o.OutOfScope = true
+				e.outputQueue.Append(o)
+			}
 		}
 	}
 }

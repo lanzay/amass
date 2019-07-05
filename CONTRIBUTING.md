@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for considering making contributions to Amass! Start by taking a look at the [open issues](https://github.com/OWASP/Amass/issues) for things we need help with!
+Thank you for considering making contributions to Amass! Start by taking a look at the [open issues](https://github.com/lanzay/Amass/issues) for things we need help with!
 
 Please follow standard github best practices: fork the repo, branch from the tip of develop, make some commits, and submit a pull request to develop. 
 

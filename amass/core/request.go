@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/utils"
 )
 
 // Request tag types.
@@ -27,14 +27,14 @@ const (
 
 // Request Pub/Sub topics used across Amass.
 const (
-	NewNameTopic      = "amass:newname"
+	NewNameTopic      = "amass:newname" //Появился новый домен
 	NewAddrTopic      = "amass:newaddr"
 	NewSubdomainTopic = "amass:newsub"
-	ResolveNameTopic  = "amass:resolve"
+	ResolveNameTopic  = "amass:resolve" //Нужно отрезолвить Домен
 	NameResolvedTopic = "amass:resolved"
-	ReverseSweepTopic = "amass:sweep"
-	ActiveCertTopic   = "amass:activecert"
-	OutputTopic       = "amass:output"
+	ReverseSweepTopic = "amass:sweep"      //new IP, cdir in asn
+	ActiveCertTopic   = "amass:activecert" //new IP
+	OutputTopic       = "amass:output"     //Готово - выводим
 	IPToASNTopic      = "amass:iptoasn"
 	NewASNTopic       = "amass:asn"
 	WhoisRequestTopic = "amass:whoisreq"
@@ -92,12 +92,13 @@ type WhoisRequest struct {
 
 // Output contains all the output data for an enumerated DNS name.
 type Output struct {
-	Timestamp time.Time
-	Name      string        `json:"name"`
-	Domain    string        `json:"domain"`
-	Addresses []AddressInfo `json:"addresses"`
-	Tag       string        `json:"tag"`
-	Source    string        `json:"source"`
+	Timestamp  time.Time
+	Name       string        `json:"name"`
+	Domain     string        `json:"domain"`
+	Addresses  []AddressInfo `json:"addresses"`
+	Tag        string        `json:"tag"`
+	Source     string        `json:"source"`
+	OutOfScope bool          `json:"out_of_scope"`
 }
 
 // AddressInfo stores all network addressing info for the Output type.

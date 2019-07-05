@@ -1,11 +1,11 @@
 
-# [![OWASP Logo](https://github.com/OWASP/Amass/blob/master/images/owasp_logo.png) OWASP Amass](https://www.owasp.org/index.php/OWASP_Amass_Project)
+# [![OWASP Logo](https://github.com/lanzay/Amass/blob/master/images/owasp_logo.png) OWASP Amass](https://www.owasp.org/index.php/OWASP_Amass_Project)
 
 [![CircleCI Status](https://circleci.com/gh/OWASP/Amass/tree/master.svg?style=shield)](https://circleci.com/gh/OWASP/Amass/tree/master)
-[![GitHub tag](https://img.shields.io/github/tag/OWASP/Amass.svg)](https://github.com/OWASP/Amass/tags)
+[![GitHub tag](https://img.shields.io/github/tag/OWASP/Amass.svg)](https://github.com/lanzay/Amass/tags)
 [![Go Version](https://img.shields.io/badge/go-1.12-blue.svg)](https://golang.org/dl/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Contribute Yes](https://img.shields.io/badge/contribute-yes-brightgreen.svg)](https://github.com/OWASP/Amass/blob/master/CONTRIBUTING.md)
+[![Contribute Yes](https://img.shields.io/badge/contribute-yes-brightgreen.svg)](https://github.com/lanzay/Amass/blob/master/CONTRIBUTING.md)
 [![Chat](https://img.shields.io/discord/433729817918308352.svg?logo=discord)](https://discord.gg/rtN8GMd)
 [![Follow on Twitter](https://img.shields.io/twitter/follow/owaspamass.svg?logo=twitter)](https://twitter.com/owaspamass)
 
@@ -14,7 +14,7 @@
 ----
 
 <p align="center">
-  <img alt="DNS Enumeration" src="https://github.com/OWASP/Amass/blob/master/images/amass.gif" width="577" height="685" />
+  <img alt="DNS Enumeration" src="https://github.com/lanzay/Amass/blob/master/images/amass.gif" width="577" height="685" />
 </p>
 
 ----
@@ -33,9 +33,9 @@ The OWASP Amass Project has developed a tool to help information security profes
 
 ## Documentation
 
-Use the [Installation Guide](https://github.com/OWASP/Amass/blob/master/doc/install.md) to get started.
+Use the [Installation Guide](https://github.com/lanzay/Amass/blob/master/doc/install.md) to get started.
 
-Go to the [User's Guide](https://github.com/OWASP/Amass/blob/master/doc/user_guide.md) for additional information.
+Go to the [User's Guide](https://github.com/lanzay/Amass/blob/master/doc/user_guide.md) for additional information.
 
 ## Community
 

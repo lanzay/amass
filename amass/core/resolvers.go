@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OWASP/Amass/amass/utils"
+	"github.com/lanzay/Amass/amass/utils"
 	"github.com/miekg/dns"
 )
 
