@@ -21,7 +21,9 @@ func main() {
 		}
 	}()
 
-	configDebug(enum)
+	//configDebug(enum)
+	//configProd(enum)
+	configNuBut(enum)
 	enum.Config.AddDomain("att.com")
 	enum.Config.Dir = "./examples/att.com-test"
 
@@ -35,6 +37,36 @@ func main() {
 
 	enum.Start()
 }
+
+func configNuBut(enum *amass.Enumeration) {
+
+	enum.Config.Passive = true             //srv.LowNumberOfNames() Only access the data sources for names and return results?
+	enum.Config.Active = false             // Determines if zone transfers will be attempted
+	enum.Config.MaxDNSQueries = 100        // The maximum number of concurrent DNS queries
+	enum.Config.IncludeUnresolvable = true //TODO excl Alterations // Determines if unresolved DNS names will be output by the enumeration
+
+	//enum.Config.DisabledDataSources = enum.GetAllSourceNames()
+
+	enum.Config.AddNumbers = true
+	enum.Config.Alterations = true
+	enum.Config.FlipWords = true
+	enum.Config.FlipNumbers = true
+	enum.Config.AddWords = true
+	enum.Config.AddNumbers = true
+	enum.Config.MinForWordFlip = 2
+	//enum.Config.EditDistance = 0
+	enum.Config.AltWordlist = []string{"./wordlists/all.txt"}
+
+	enum.Config.BruteForcing = false
+	enum.Config.Recursive = true     // Will recursive brute forcing be performed?
+	enum.Config.MinForRecursive = 10 // Will the enumeration including brute forcing techniques
+
+	enum.Config.AddAPIKey("Shodan", &core.APIKey{Key: "PSKINdQe1GyxGgecYz2191H2JoS9qvgD"})
+
+	//enum.ProvidedNames = []string{} // Names already known prior to the enumeration
+
+}
+
 func configDebug(enum *amass.Enumeration) {
 
 	enum.Config.IncludeOutOfScope = true
@@ -43,7 +75,7 @@ func configDebug(enum *amass.Enumeration) {
 	enum.Config.MaxDNSQueries = 1 // The maximum number of concurrent DNS queries
 	//enum.Config.IncludeUnresolvable = true //TODO excl Alterations // Determines if unresolved DNS names will be output by the enumeration
 
-	enum.Config.DisabledDataSources = enum.GetAllSourceNames()[1:]
+	//enum.Config.DisabledDataSources = enum.GetAllSourceNames()[1:]
 
 	enum.Config.AddNumbers = false
 	enum.Config.Alterations = false

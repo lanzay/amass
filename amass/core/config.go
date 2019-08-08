@@ -35,6 +35,9 @@ type Config struct {
 	//Append to output Out of scope domain
 	IncludeOutOfScope bool
 
+	//Append to domain root all domain if have same admin eMail
+	IncludeDomainByAdminMail bool
+
 	// A Universally Unique Identifier (UUID) for the enumeration
 	UUID uuid.UUID
 

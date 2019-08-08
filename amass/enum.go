@@ -447,3 +447,10 @@ func (e *Enumeration) GetAllSourceNames() []string {
 	}
 	return names
 }
+
+func (e *Enumeration) GetAllSource() []core.Service { //TODO !!! Only For Test
+	var services []core.Service
+
+	services = append(services, e.dataSources...)
+	return e.dataSources
+}
