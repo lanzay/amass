@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 	"github.com/miekg/dns"
 )
 

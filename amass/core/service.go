@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 const (

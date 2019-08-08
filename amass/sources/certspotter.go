@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // CertSpotter is the Service that handles access to the CertSpotter data source.

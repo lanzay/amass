@@ -9,8 +9,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils/viz"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils/viz"
 )
 
 // These strings represent the various Amass data operations.

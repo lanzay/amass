@@ -4,8 +4,8 @@
 package sources
 
 import (
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // Arquivo is the Service that handles access to the Arquivo data source.

@@ -3,7 +3,7 @@ package sources
 import (
 	"testing"
 
-	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/amass/amass/core"
 )
 
 func TestFindSubdomains(t *testing.T) {

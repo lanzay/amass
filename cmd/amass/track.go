@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/handlers"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/handlers"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 const (

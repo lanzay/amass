@@ -18,9 +18,9 @@ import (
 	"github.com/cayleygraph/cayley/graph"
 	_ "github.com/cayleygraph/cayley/graph/kv/bolt" // Used by the cayley package
 	"github.com/cayleygraph/cayley/quad"
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
-	"github.com/lanzay/Amass/amass/utils/viz"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
+	"github.com/lanzay/amass/amass/utils/viz"
 	homedir "github.com/mitchellh/go-homedir"
 )
 

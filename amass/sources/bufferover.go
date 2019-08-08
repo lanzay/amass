@@ -6,8 +6,8 @@ package sources
 import (
 	"fmt"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // BufferOver is the Service that handles access to the BufferOver data source.

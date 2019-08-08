@@ -20,7 +20,7 @@ import (
 
 	"github.com/go-ini/ini"
 	"github.com/google/uuid"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 const (

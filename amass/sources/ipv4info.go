@@ -8,8 +8,8 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // IPv4Info is the Service that handles access to the IPv4Info data source.

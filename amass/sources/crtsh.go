@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 	_ "github.com/lib/pq" // Need the postgres driver
 )
 

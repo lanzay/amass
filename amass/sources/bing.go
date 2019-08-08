@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // Bing is the Service that handles access to the Bing data source.

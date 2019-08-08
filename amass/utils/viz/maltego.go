@@ -9,7 +9,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // WriteMaltegoData converts the Amass graph nodes and edges into a

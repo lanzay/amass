@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/amass/amass/core"
 )
 
 func TestDNSStaticWildcard(t *testing.T) {

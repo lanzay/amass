@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/amass/amass/core"
 	"github.com/miekg/dns"
 )
 

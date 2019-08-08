@@ -8,8 +8,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils/viz"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils/viz"
 )
 
 // DataOptsHandler is the object that implements the DataHandler interface for JSON files.

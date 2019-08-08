@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // Mnemonic is the Service that handles access to the Mnemonic data source.

@@ -10,8 +10,8 @@ import (
 	"time"
 
 	bolt "github.com/johnnadratowski/golang-neo4j-bolt-driver"
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils/viz"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/utils/viz"
 )
 
 // Neo4j is the client object for a Neo4j graph database connection.

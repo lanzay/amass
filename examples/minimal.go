@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/amass/amass/core"
 	"math/rand"
 	"time"
 
-	"github.com/lanzay/Amass/amass"
+	"github.com/lanzay/amass/amass"
 )
 
 func main() {

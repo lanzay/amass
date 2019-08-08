@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/handlers"
-	"github.com/lanzay/Amass/amass/sources"
-	"github.com/lanzay/Amass/amass/utils"
+	"github.com/lanzay/amass/amass/core"
+	"github.com/lanzay/amass/amass/handlers"
+	"github.com/lanzay/amass/amass/sources"
+	"github.com/lanzay/amass/amass/utils"
 )
 
 // Enumeration is the object type used to execute a DNS enumeration with Amass.
