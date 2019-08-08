@@ -101,7 +101,7 @@ func configProd(enum *amass.Enumeration) {
 
 	enum.Config.Passive = false     //srv.LowNumberOfNames() Only access the data sources for names and return results?
 	enum.Config.Active = true       // Determines if zone transfers will be attempted
-	enum.Config.MaxDNSQueries = 100 // The maximum number of concurrent DNS queries
+	enum.Config.MaxDNSQueries = 111 // The maximum number of concurrent DNS queries
 	//enum.Config.IncludeUnresolvable = true //TODO excl Alterations // Determines if unresolved DNS names will be output by the enumeration
 
 	//enum.Config.DisabledDataSources = enum.GetAllSourceNames()
