@@ -5,14 +5,20 @@ package sources
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/lanzay/Amass/amass/core"
+	"github.com/lanzay/Amass/amass/utils"
 	"log"
 	"strings"
 	"time"
+)
 
-	"github.com/lanzay/Amass/amass/core"
-	"github.com/lanzay/Amass/amass/utils"
+var (
+	blackListMails = []string{
+		"do-not-use@privacy-protected.email",
+	}
 )
 
 type WebsiteInformer struct {
@@ -61,30 +67,34 @@ func (w *WebsiteInformer) executeQuery(domain string) {
 		return
 	}
 
+	w.SetActive()
+
 	t := time.NewTicker(time.Second)
 	defer t.Stop()
 
-	for {
-		select {
-		case <-w.Quit():
+	select {
+	case <-w.Quit():
+		return
+	case <-t.C:
+		domains, err := w.domainsByMail(domain)
+		if err != nil {
+			w.Config().Log.Printf("%s: %s: %v", w.String(), domain, err)
 			return
-		case <-t.C:
-			domains, err := w.domainsByMail(domain)
-			if err != nil {
-				w.Config().Log.Printf("%s: %s: %v", w.String(), domain, err)
-				return
-			}
+		}
 
-			for _, domain := range domains {
-				w.Bus().Publish(core.NewNameTopic, &core.DNSRequest{
-					Name:   cleanName(domain),
-					Domain: domain,
-					Tag:    w.SourceType,
-					Source: w.String(),
-				})
+		for _, domain := range domains {
+			if w.Config().IncludeDomainByAdminMail {
+				w.Config().AddDomain(cleanName(domain)) //TODO !!! ADD NEW domain BY Admin eMail
 			}
+			w.Bus().Publish(core.NewNameTopic, &core.DNSRequest{
+				Name:   cleanName(domain),
+				Domain: domain,
+				Tag:    w.SourceType,
+				Source: w.String(),
+			})
 		}
 	}
+
 }
 
 // https://website.informer.com/att.com/emails
@@ -99,6 +109,10 @@ func (w *WebsiteInformer) executeQuery(domain string) {
 
 //page, err := utils.RequestWebPage(u, nil, nil, "", "")
 func (w *WebsiteInformer) domainsByMail(domain string) ([]string, error) {
+
+	blackList := []string{
+		"do-not-use@privacy-protected.email",
+	}
 
 	u := fmt.Sprintf("https://website.informer.com/%s/emails", domain)
 	page, err := utils.RequestWebPage(u, nil, nil, "", "")
@@ -118,6 +132,15 @@ func (w *WebsiteInformer) domainsByMail(domain string) ([]string, error) {
 	var ids []string
 	var mailId string
 	for _, mail := range mails {
+
+		for _, bl := range blackList {
+			if strings.EqualFold(bl, mail) {
+				log.Println("[W] eMail in black list", domain, mail)
+				err = errors.New("eMail in black list")
+				break
+			}
+		}
+
 		u := fmt.Sprintf("https://website.informer.com%s", mail)
 		page, err := utils.RequestWebPage(u, nil, nil, "", "")
 		if err != nil {
@@ -150,9 +173,15 @@ func (w *WebsiteInformer) domainsByMail(domain string) ([]string, error) {
 		checkErr(err)
 		err = json.Unmarshal([]byte(page), part)
 		checkErr(err)
+		if err != nil {
+			break
+		}
 		r = strings.NewReader(part.Sites)
 		doc, err = goquery.NewDocumentFromReader(r)
 		checkErr(err)
+		if err != nil {
+			break
+		}
 		doc.Find("div.one-sites-e>div.left-sites-e>a").Each(func(i int, s *goquery.Selection) {
 			if domain, ok := s.Attr("href"); ok {
 				domains = append(domains, strings.TrimPrefix(domain, "/"))
@@ -163,11 +192,121 @@ func (w *WebsiteInformer) domainsByMail(domain string) ([]string, error) {
 		})
 	}
 
-	return domains, nil
+	return domains, err
 
 }
 func checkErr(err error) {
 	if err != nil {
 		log.Println("[E]", err)
 	}
+}
+
+//============================
+func (w *WebsiteInformer) GetDomainsByDomain(domain string) ([]string, []string, error) {
+	mails, err := w.GetDomainMails(domain)
+	domains, err := w.GetDomainsByMails(mails)
+	return domains, mails, err
+}
+
+//Получаем eMails домена из WhoIs и т.п.
+func (w *WebsiteInformer) GetDomainMails(domain string) ([]string, error) {
+
+	u := fmt.Sprintf("https://website.informer.com/%s/emails", domain)
+	page, err := utils.RequestWebPage(u, nil, nil, "", "")
+	if err != nil {
+		return nil, err
+	}
+	r := strings.NewReader(page)
+	doc, err := goquery.NewDocumentFromReader(r)
+	if utils.CheckErr(err) {
+		return nil, err
+	}
+	var mails []string
+	doc.Find("div.list-email:nth-child(1)>ul>li>a").Each(func(i int, s *goquery.Selection) {
+		if mail, ok := s.Attr("href"); ok {
+			mail = strings.TrimPrefix(mail, "/email/")
+			mails = append(mails, mail)
+		}
+	})
+	return mails, nil
+}
+
+//Получаем все домены у которых при регистрации указаны eMails
+func (w *WebsiteInformer) GetDomainsByMails(mails []string) ([]string, error) {
+
+	var err error
+	var domains []string
+	var ids []string
+	var mailId string
+
+	for _, mail := range mails {
+		if mailInBlackList(mail) {
+			//w.Config().Log.Printf("[W] eMail in black list", mail)
+			continue
+		}
+
+		u := fmt.Sprintf("https://website.informer.com/email/%s", mail)
+		page, err := utils.RequestWebPage(u, nil, nil, "", "")
+		if err != nil {
+			return nil, err
+		}
+		r := strings.NewReader(page)
+		doc, err := goquery.NewDocumentFromReader(r)
+		mailId, _ = doc.Find("#show-more").Attr("email-id")
+		doc.Find("div.list-sites-e>div>div>a").Each(func(i int, s *goquery.Selection) {
+			if domain, ok := s.Attr("href"); ok {
+				domains = append(domains, strings.TrimPrefix(domain, "/"))
+				if id, ok := s.Parent().Parent().Attr("site-id"); ok {
+					ids = append(ids, id)
+				}
+			}
+		})
+	}
+
+	//Scroll all resp 10...
+	type respW struct {
+		Sites    string `json:"sites"`
+		ShowMore bool   `json:"showMore"`
+	}
+	i := 0
+	page := ""
+	part := &respW{ShowMore: true}
+	for part.ShowMore {
+		i += 10
+		u := fmt.Sprintf("https://website.informer.com/ajax/email/sites?email_id=%s&sort_by=popularity&skip=%s&max_index=%d", mailId, strings.Join(ids, ","), i)
+		page, err = utils.RequestWebPage(u, nil, nil, "", "")
+		if utils.ErrLog(err) {
+			break
+		}
+		err = json.Unmarshal([]byte(page), part)
+		if utils.ErrLog(err) {
+			break
+		}
+
+		r := strings.NewReader(part.Sites)
+		doc, err := goquery.NewDocumentFromReader(r)
+		utils.CheckErr(err)
+		if err != nil {
+			break
+		}
+		doc.Find("div.one-sites-e>div.left-sites-e>a").Each(func(i int, s *goquery.Selection) {
+			if domain, ok := s.Attr("href"); ok {
+				domains = append(domains, strings.TrimPrefix(domain, "/"))
+				if id, ok := s.Parent().Parent().Attr("site-id"); ok {
+					ids = append(ids, id)
+				}
+			}
+		})
+	}
+	return domains, err
+}
+
+func mailInBlackList(mail string) bool {
+
+	for _, bl := range blackListMails {
+		if strings.EqualFold(bl, mail) {
+			return true
+		}
+	}
+	return false
 }
