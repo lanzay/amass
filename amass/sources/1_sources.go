@@ -4,6 +4,7 @@
 package sources
 
 import (
+	"errors"
 	"fmt"
 	"net"
 	"net/http"
@@ -11,6 +12,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/PuerkitoBio/fetchbot"
@@ -198,7 +200,9 @@ func linksAndNames(domain string, ctx *fetchbot.Context, res *http.Response, lin
 }
 
 func setFetcherConfig(f *fetchbot.Fetcher) {
-	d := net.Dialer{}
+	d := net.Dialer{
+		Control: controlIP,
+	}
 	f.HttpClient = &http.Client{
 		Timeout: 10 * time.Second,
 		Transport: &http.Transport{
@@ -212,4 +216,24 @@ func setFetcherConfig(f *fetchbot.Fetcher) {
 	f.CrawlDelay = 1 * time.Second
 	f.DisablePoliteness = true
 	f.UserAgent = utils.UserAgent
+}
+
+var CIDRs = []string{
+	"127.0.0.0/24",
+}
+
+func controlIP(network, address string, c syscall.RawConn) error {
+
+	ipDest, _, _ := net.SplitHostPort(address)
+
+	_, ipnet, err := net.ParseCIDR(CIDRs[0])
+	if err != nil {
+		return nil
+	}
+
+	ip := net.ParseIP(ipDest)
+	if ipnet.Contains(ip) {
+		return errors.New("BAD IP (localhost)")
+	}
+	return nil
 }
