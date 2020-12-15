@@ -1,6 +1,6 @@
 module github.com/lanzay/amass
 
-go 1.13
+go 1.15
 
 require (
 	github.com/PuerkitoBio/fetchbot v1.1.2
