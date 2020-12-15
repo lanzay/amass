@@ -1,4 +1,4 @@
-module github.com/lanzay/amass
+module github.com/lanzay/amass/v5
 
 go 1.15
 
