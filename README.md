@@ -11,7 +11,7 @@
 
 [![Rawsec's CyberSecurity Inventory](https://inventory.rawsec.ml/img/badges/Rawsec-inventoried-FF5050_flat.svg)](https://inventory.rawsec.ml/)
 
-----
+---- 
 
 <p align="center">
   <img alt="DNS Enumeration" src="https://github.com/lanzay/Amass/blob/master/images/amass.gif" width="577" height="685" />
